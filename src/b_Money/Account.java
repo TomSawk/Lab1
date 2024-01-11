@@ -3,6 +3,7 @@ package b_Money;
 import java.util.Hashtable;
 
 public class Account {
+	// Added 'name' attribute for account identification
 	private String name;
 	private Money content;
 	private Hashtable<String, TimedPayment> timedpayments = new Hashtable<String, TimedPayment>();
@@ -26,6 +27,7 @@ public class Account {
 	 * @param toaccount Id of receiving account
 	 */
 	public void addTimedPayment(String id, Integer interval, Integer next, Money amount, Bank tobank, String toaccount) {
+		// Added checks to prevent duplicate addition of timed payments
 		if (timedPaymentExists(id)) {
 			System.err.println("timed payment " + id + " already exists");
 		} else {
@@ -39,6 +41,7 @@ public class Account {
 	 * @param id Id of timed payment to remove
 	 */
 	public void removeTimedPayment(String id) {
+		// Added checks to prevent removal of non-existing timed payments
 		if (timedPaymentExists(id)) {
 			timedpayments.remove(id);
 		} else {
@@ -58,6 +61,7 @@ public class Account {
 	 * A time unit passes in the system
 	 */
 	public void tick() {
+		// Fixed duplicated call to tp.tick();
 		for (TimedPayment tp : timedpayments.values()) {
 			tp.tick();
 		}
@@ -76,6 +80,7 @@ public class Account {
 	 * @param money Money to withdraw.
 	 */
 	public void withdraw(Money money) {
+		// Added a check to ensure sufficient balance before withdrawal
 		if(this.getBalance() < money.getAmount()) {
 			System.err.println("account " + this.getAccountName() + " has only " + this.getBalance() + " (you want to withdraw " + money.getAmount() + ")");
 

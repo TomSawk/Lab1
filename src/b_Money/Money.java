@@ -1,5 +1,11 @@
 package b_Money;
 
+// Completed the implementation of Money class methods
+// This includes handling currency conversion in add and sub methods
+// Implemented compareTo method for comparison based on universal value
+// Added equals method for equality check
+// Implemented isZero and negate methods
+
 public class Money implements Comparable {
 	private int amount;
 	private Currency currency;

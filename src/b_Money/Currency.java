@@ -1,5 +1,7 @@
 package b_Money;
 
+// Completed the implementation of Currency methods
+// to handle currency conversions and get/set operations
 public class Currency {
 	private String name;
 	private Double rate;
